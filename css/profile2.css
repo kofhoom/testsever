@@ -1,0 +1,1390 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+    transition: all 1s;
+    background-color: #fff;
+    overflow: hidden;
+    font-family: sans-serif;
+
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+::-moz-selection {
+    background: #f00;
+    color: #fff;
+}
+
+::selection {
+    background: #f00;
+    color: #fff;
+}
+
+#a {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+
+p {
+    color: #fff;
+    font-size: 25px;
+    display: inline;
+    background: linear-gradient(178deg, #fff 60%, black);
+    background: -ms-linear-gradient(178deg, #fff 60%, black);
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.p2 {
+    display: inline;
+    font-size: 20px;
+    color: #fff;
+    background: linear-gradient(178deg, #fff 60%, black);
+    background: -ms-linear-gradient(178deg, #fff 60%, black);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.textbox {
+    position: relative;
+    height: 60px;
+    top: 0%;
+    transform: translateX(-50%);
+    transform: translateY(-313%);
+    left: -50%;
+    text-align: right;
+    opacity: 1;
+    transition: all 1s;
+    z-index: 999;
+    cursor: pointer;
+
+}
+
+.explor {
+    display: none;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 15px;
+    color: #fff;
+    width: 500px;
+    height: 500px;
+    margin-top: -250px;
+    margin-left: -250px;
+    line-height: 500px;
+}
+
+#wrap {
+    width: 100%;
+    position: relative;
+}
+
+#canvas {
+    font-size: 30px;
+    position: absolute;
+    z-index: 13;
+    top: 0;
+    padding: 20px;
+    opacity: 0;
+    transition: all 1s;
+    right: 0px;
+}
+
+.start12 {
+    margin-top: 10px;
+    display: inline-block;
+    font-size: 18px;
+    transform: translateX(-20px);
+    animation-name: ingt;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+
+
+.leftright {
+    bottom: 20px;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    z-index: 999;
+}
+
+.center {
+    display: inline-block;
+    position: relative;
+    top: 0px;
+    width: 4px;
+    height: 4px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    opacity: 0;
+    margin: auto 20px;
+
+}
+
+.infinity {
+    animation-name: in;
+    animation-duration: 0.5s;
+    animation-iteration-count: 3;
+}
+
+
+
+.infinity2 {
+    animation-name: in2;
+    animation-duration: 0.5s;
+    animation-iteration-count: 3;
+}
+
+
+
+#left {
+    opacity: 0;
+    transition: all 1s;
+}
+
+#right {
+    opacity: 0;
+    transition: all 1s;
+}
+
+.leftright img {
+    width: 23px;
+    cursor: pointer;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.proflie {
+
+    width: 30%;
+    height: 100%;
+    position: absolute;
+
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+
+}
+
+.proflie img {
+    position: absolute;
+    border-right: 1px solid #fff;
+    top: 0px;
+    cursor: pointer;
+}
+
+.proflie img:hover {
+    opacity: 0.8;
+}
+
+.proflie2 {
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.proflie2 img {
+
+    position: absolute;
+    border-right: 1px solid lightgray;
+    top: 0px;
+    cursor: pointer;
+}
+
+.proflie2 img:hover {
+    opacity: 0.8;
+}
+
+.proflie3 {
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.proflie3 img {
+    position: absolute;
+    border-right: 1px solid #fff;
+    top: 0px;
+}
+
+.proflie3 img:hover {
+    opacity: 0.8;
+}
+
+.proflie4 {
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.proflie4 img {
+    position: absolute;
+    border-right: 1px solid #fff;
+    top: 0px;
+
+}
+
+.proflie4 img:hover {
+    opacity: 0.8;
+}
+
+
+.leftmove {
+    animation-name: leftmove1;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+}
+
+
+
+.rightmove {
+    animation-name: righttmove1;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+}
+
+
+
+
+
+.view {
+    cursor: pointer;
+    font-size: 20px;
+    color: #fff;
+    width: 186px;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 1001;
+    opacity: 1;
+    transition: all 1s;
+
+}
+
+.view2 {
+    cursor: pointer;
+    font-size: 20px;
+    color: #fff;
+    width: 186px;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 1s;
+}
+
+.show360view {
+
+
+    padding: 20px;
+
+
+    right: 0;
+}
+
+.close360view {
+
+    right: 0;
+    padding: 20px;
+
+
+}
+
+.box {
+    top: 58%;
+    transform: translateY(-50%);
+    left: 370px;
+    width: 100%;
+    position: absolute;
+
+}
+
+.box2 {
+    top: 37%;
+    transform: translateY(-50%);
+    left: 0px;
+    width: 100%;
+    position: absolute;
+
+}
+
+
+.box3 {
+    top: 45%;
+    transform: translateY(-50%);
+    left: -15px;
+    width: 100%;
+    position: absolute;
+
+}
+
+.box4 {
+    top: 37%;
+    transform: translateY(-50%);
+    left: -15px;
+    width: 100%;
+    position: absolute;
+
+}
+
+.degbox {
+    display: none;
+}
+
+.myself {
+    background: black;
+    border: 1px solid #fff;
+    margin: 0 auto;
+    top: 38%;
+    width: 701px;
+    bottom: 10px;
+    color: #fff;
+    padding: 15px;
+    position: relative;
+    opacity: 0;
+}
+
+.myself .box3txt {
+    font-size: 13px;
+    border: 1px solid #fff;
+    padding: 5px;
+    display: inline;
+    position: relative;
+    left: 55px;
+    cursor: pointer;
+
+
+}
+
+.myself span {
+    line-height: 50px;
+    font-size: 25px;
+
+}
+
+.myself2 {
+    background: black;
+    margin: 0 auto;
+    top: 38%;
+    border: 1px solid #fff;
+    width: 866px;
+    bottom: 10px;
+    color: #fff;
+    padding: 15px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.myself2 span {
+    line-height: 50px;
+    font-size: 25px;
+
+}
+
+.myself2 .box2txt {
+    font-size: 13px;
+    border: 1px solid #fff;
+    padding: 5px;
+    display: inline;
+    position: relative;
+    left: 367px;
+    cursor: pointer;
+
+
+}
+
+.myself3 {
+    background: black;
+    border: 1px solid #fff;
+    margin: 0 auto;
+    top: 38%;
+    width: 1039px;
+    bottom: 10px;
+    color: #fff;
+    padding: 13px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.myself3 span {
+    line-height: 50px;
+    font-size: 25px;
+}
+
+.myself3 .box3txt {
+    font-size: 13px;
+    border: 1px solid #fff;
+    padding: 5px;
+    display: inline;
+    position: relative;
+    left: 749px;
+    cursor: pointer;
+}
+
+.myself4 {
+    background: black;
+    border: 1px solid #fff;
+    margin: 0 auto;
+    top: 38%;
+    width: 951px;
+    bottom: 10px;
+    color: #fff;
+    padding: 13px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.myself4 span {
+    line-height: 50px;
+    font-size: 25px;
+}
+
+.myself4 .box3txt {
+    font-size: 13px;
+    border: 1px solid #fff;
+    padding: 5px;
+    display: inline;
+    position: relative;
+    left: 665px;
+    cursor: pointer;
+}
+
+.maintext {
+
+    position: absolute;
+    width: 280px;
+    height: 60px;
+    top: 35%;
+    left: -330px;
+    text-align: right;
+    opacity: 1;
+    transition: all 1s;
+    z-index: 999;
+    cursor: pointer;
+    font-size: 15px;
+    display: none;
+}
+
+/*keyframes*/
+@keyframes ingt {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes in2 {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes leftmove1 {
+    0% {
+        transform: translateX(-300px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes righttmove1 {
+    0% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-300px);
+    }
+}
+
+/*wideview*/
+
+/*sct1*/
+.widestylemyself {
+    position: relative;
+    margin: 0 auto;
+    top: 5px;
+    right: 78px;
+    z-index: 19;
+    width: 570px;
+    bottom: 10px;
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    background: black;
+    border: 1px solid #fff;
+    padding: 15px;
+}
+
+.wideprofile img:hover {
+    opacity: 0.8;
+}
+
+.widebox {
+    top: 82%;
+    transform: translateY(-50%);
+    left: 74px;
+    width: 100%;
+    position: absolute;
+}
+
+.widestylemyself span {
+    line-height: 40px;
+    font-size: 21px;
+}
+
+.widestylemyself .box3txt {
+    font-size: 10px;
+    border: 1px solid #fff;
+    padding: 5px;
+    display: inline;
+    position: relative;
+    left: 7px;
+    cursor: pointer;
+}
+
+.wideprofile {
+    width: 100%;
+    height: 0;
+    position: relative;
+    text-align: center;
+    right: 0px;
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.wideprofile img {
+    transform: translateY(15%);
+    border: 1px solid #fff;
+    top: 0px;
+    /*    width: 21rem;*/
+    height: 50vh;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+/*sec2*/
+
+.wideprofile2 {
+
+    width: 100%;
+    height: 0;
+    position: relative;
+    text-align: center;
+    right: 0px;
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.wideprofile2 img {
+    transform: translateY(15%);
+    border: 1px solid #fff;
+    top: 0px;
+    /*    width: 21rem;*/
+    height: 50vh;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.wideprofile2 img:hover {
+    opacity: 0.8;
+}
+
+
+.widebox2 {
+    top: 41%;
+    transform: translateY(-50%);
+    left: -90px;
+    width: 100%;
+    position: absolute;
+
+}
+
+.widestylemyself2 {
+    margin: 0 auto;
+    top: 38%;
+    width: 750px;
+    bottom: 10px;
+    color: #fff;
+    padding: 15px;
+    visibility: hidden;
+    opacity: 0;
+    background: black;
+    border: 1px solid #fff;
+}
+
+.widestylemyself2 .box2txt {
+    font-size: 10px;
+    border: 1px solid #fff;
+    padding: 5px;
+    display: inline;
+    position: relative;
+    left: 336px;
+    cursor: pointer;
+}
+
+.widestylemyself2 span {
+    line-height: 36px;
+    font-size: 21px;
+}
+
+/*sect3*/
+
+.wideprofile3 {
+    width: 100%;
+    height: 0;
+    position: relative;
+    text-align: center;
+    right: 0px;
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+
+}
+
+.wideprofile3 img {
+    transform: translateY(15%);
+    border: 1px solid #fff;
+    top: 0px;
+    /*    width: 21rem;*/
+    height: 50vh;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.wideprofile3 img:hover {
+    opacity: 0.8;
+}
+
+.widebox3 {
+    top: 2%;
+
+    left: -70px;
+    width: 100%;
+    position: absolute;
+    display: block;
+
+}
+
+.widestylemyself3 {
+    margin: 0 auto;
+    top: 38%;
+    width: 900px;
+    bottom: 10px;
+    color: #fff;
+    padding: 15px;
+    visibility: hidden;
+    opacity: 0;
+
+    background: black;
+    border: 1px solid #fff;
+
+}
+
+.widestylemyself3 .box3txt {
+    font-size: 10px;
+    border: 1px solid #fff;
+    padding: 5px;
+    display: inline;
+    position: relative;
+    left: 655px;
+    cursor: pointer;
+}
+
+
+.widestylemyself3 span {
+    line-height: 36px;
+    font-size: 21px;
+}
+
+/*sec4*/
+
+
+.wideprofile4 {
+    width: 100%;
+    height: 0;
+    position: relative;
+    text-align: center;
+    right: 0px;
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.wideprofile4 img {
+    transform: translateY(15%);
+    border: 1px solid #fff;
+    top: 0px;
+    /*        width: 21rem;*/
+    height: 50vh;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.wideprofile4 img:hover {
+    opacity: 0.8;
+}
+
+
+.widebox4 {
+    top: 4%;
+    left: -70px;
+    width: 100%;
+    position: absolute;
+    display: block;
+}
+
+.widestylemyself4 {
+    margin: 0 auto;
+    top: 38%;
+    width: 900px;
+    bottom: 10px;
+    color: #fff;
+    padding: 15px;
+    visibility: hidden;
+    opacity: 0;
+    background: black;
+    border: 1px solid #fff;
+
+}
+
+.widestylemyself4 .box3txt {
+    font-size: 13px;
+    border: 1px solid #fff;
+    padding: 5px;
+    display: inline;
+    position: relative;
+    left: 646px;
+    cursor: pointer;
+}
+
+.widestylemyself4 span {
+    line-height: 36px;
+    font-size: 21px;
+}
+
+@media all and (min-width:902px) and (max-width: 1731px) {
+
+
+
+    .textbox {
+        position: relative;
+        height: 60px;
+        transform: translateX(-50%);
+        transform: translateY(-670%);
+        left: -32%;
+        text-align: right;
+        opacity: 1;
+        transition: all 1s;
+        z-index: 999;
+        cursor: pointer;
+    }
+
+
+    .proflie {
+        width: 100%;
+        height: 0;
+        position: relative;
+        text-align: center;
+        right: 0px;
+        z-index: 3;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+
+    .proflie img {
+        transform: translateY(15%);
+        border: 1px solid #fff;
+        top: 0px;
+        /*        width: 21rem;*/
+        height: 50vh;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .proflie img:hover {
+        opacity: 0.8;
+    }
+
+    .proflie2 {
+        width: 100%;
+        height: 0;
+        position: relative;
+        text-align: center;
+        right: 0px;
+        z-index: 3;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .proflie2 img {
+        transform: translateY(15%);
+        border: 1px solid #fff;
+        top: 0px;
+        /*        width: 21rem;*/
+        height: 50vh;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .proflie2 img:hover {
+        opacity: 0.8;
+    }
+
+    .proflie3 {
+        width: 100%;
+        height: 0;
+        position: relative;
+        text-align: center;
+        right: 0px;
+        z-index: 3;
+        opacity: 0;
+        visibility: hidden;
+
+    }
+
+    .proflie3 img {
+        transform: translateY(15%);
+        border: 1px solid #fff;
+        top: 0px;
+        /*        width: 21rem;*/
+        height: 50vh;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .proflie3 img:hover {
+        opacity: 0.8;
+    }
+
+    .proflie4 {
+        width: 100%;
+        height: 0;
+        position: relative;
+        text-align: center;
+        right: 0px;
+        z-index: 3;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .proflie4 img {
+        transform: translateY(15%);
+        border: 1px solid #fff;
+        top: 0px;
+        /*        width: 21rem;*/
+        height: 50vh;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .proflie4 img:hover {
+        opacity: 0.8;
+    }
+
+
+    .leftmove {
+        animation-name: leftmove1;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+
+
+
+    .rightmove {
+        animation-name: righttmove1;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+
+    .view {
+        cursor: pointer;
+        font-size: 20px;
+        color: #fff;
+        width: 186px;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: 1000;
+        opacity: 0;
+        transition: all 1s;
+    }
+
+    .show360view {
+        padding: 20px;
+        right: 0;
+    }
+
+    .view2 {
+        cursor: pointer;
+        font-size: 20px;
+        color: #fff;
+        width: 186px;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: 999;
+        opacity: 0;
+        transition: all 1s;
+    }
+
+    .close360view {
+        right: 0;
+        padding: 20px;
+    }
+
+    .box {
+        top: 78%;
+        transform: translateY(-50%);
+        left: 74px;
+        width: 100%;
+        position: absolute;
+    }
+
+
+
+
+
+    .box2 {
+        top: 41%;
+        transform: translateY(-50%);
+        left: -90px;
+        width: 100%;
+        position: absolute;
+
+    }
+
+    .b2two {
+        top: 41%;
+        transform: translateY(-50%);
+        left: -90px;
+        width: 100%;
+        position: absolute;
+    }
+
+
+
+    .box3 {
+        top: 43%;
+        left: -70px;
+        width: 100%;
+        position: absolute;
+        display: block;
+    }
+
+    .box4 {
+        top: 43%;
+        left: -70px;
+        width: 100%;
+        position: absolute;
+        display: block;
+    }
+
+    .myself {
+        position: relative;
+        margin: 0 auto;
+        top: 5px;
+        right: 78px;
+        z-index: 19;
+        width: 570px;
+        bottom: 10px;
+        color: #fff;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .myself span {
+        line-height: 40px;
+        font-size: 21px;
+    }
+
+    .myself .box3txt {
+        font-size: 10px;
+        border: 1px solid #fff;
+        padding: 5px;
+        display: inline;
+        position: relative;
+        left: 7px;
+        cursor: pointer;
+    }
+
+    .myself2 {
+        margin: 0 auto;
+        top: 38%;
+        width: 750px;
+        bottom: 10px;
+        color: #fff;
+        padding: 15px;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .myself2 .box2txt {
+        font-size: 10px;
+        border: 1px solid #fff;
+        padding: 5px;
+        display: inline;
+        position: relative;
+        left: 336px;
+        cursor: pointer;
+    }
+
+    .myself2 span {
+        line-height: 30px;
+        font-size: 21px;
+    }
+
+    .myself3 {
+        margin: 0 auto;
+        top: 38%;
+        width: 900px;
+        bottom: 10px;
+        color: #fff;
+        padding: 15px;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .myself3 .box3txt {
+        font-size: 10px;
+        border: 1px solid #fff;
+        padding: 5px;
+        display: inline;
+        position: relative;
+        left: 655px;
+        cursor: pointer;
+    }
+
+
+    .myself3 span {
+        line-height: 30px;
+        font-size: 21px;
+    }
+
+
+    .myself4 {
+        margin: 0 auto;
+        top: 38%;
+        width: 900px;
+        bottom: 10px;
+        color: #fff;
+        padding: 15px;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .myself4 .box3txt {
+        font-size: 13px;
+        border: 1px solid #fff;
+        padding: 5px;
+        display: inline;
+        position: relative;
+        left: 646px;
+        cursor: pointer;
+    }
+
+    .myself4 span {
+        line-height: 30px;
+        font-size: 21px;
+    }
+
+}
+
+@media all and (max-width: 901px) {
+    #canvas {
+        display: none;
+    }
+
+    .leftright {
+        display: none;
+    }
+
+    .proflie {
+        display: none;
+    }
+
+    .proflie2 {
+        display: none;
+    }
+
+    .proflie3 {
+        display: none;
+    }
+
+    .proflie4 {
+        display: none;
+    }
+
+    .box {
+        display: block;
+    }
+
+    .myself {
+        display: none;
+    }
+
+    .myself span {
+        display: none;
+    }
+
+    .myself2 {
+        display: none;
+    }
+
+    .myself2 span {
+        display: none;
+    }
+
+    .myself3 {
+        display: none;
+    }
+
+    .myself3 span {
+        display: none;
+    }
+
+    .myself4 {
+        display: none;
+    }
+
+    .myself4 span {
+        display: none;
+    }
+
+    .view {
+        display: none;
+    }
+
+    .textbox {
+
+        position: absolute;
+        width: 280px;
+        height: 60px;
+        top: 35%;
+        left: -320px;
+        text-align: end;
+        opacity: 1;
+        transition: all 1s;
+        z-index: 999;
+        cursor: pointer;
+        display: none;
+    }
+
+    .maintext {
+
+        display: inline-block;
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        top: 0;
+        left: -360px;
+        text-align: center;
+        opacity: 1;
+        transition: all 1s;
+        z-index: 999;
+        font-size: 15px;
+        z-index: 9999;
+
+
+    }
+
+    .box3 {
+        display: none;
+    }
+
+    .tt3 {
+        display: none;
+    }
+
+}
+
+
+@media all and (min-height:1366px) {
+    .textbox {
+        position: relative;
+        height: 60px;
+        transform: translateX(-50%);
+        transform: translateY(-860%);
+        left: -32%;
+        text-align: right;
+        opacity: 1;
+        transition: all 1s;
+        z-index: 999;
+        cursor: pointer;
+    }
+
+
+
+    .proflie img {
+        transform: translateY(28%);
+        border: 1px solid #fff;
+        top: 0px;
+        /* width: 21rem; */
+        height: 50vh;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .wideprofile img {
+        transform: translateY(28%);
+        border: 1px solid #fff;
+        top: 0px;
+        /* width: 21rem; */
+        height: 50vh;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+
+    .proflie2 img {
+        transform: translateY(27%);
+        border: 1px solid #fff;
+        top: 0px;
+        /* width: 21rem; */
+        height: 50vh;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .wideprofile2 img {
+        transform: translateY(27%);
+        border: 1px solid #fff;
+        top: 0px;
+        /* width: 21rem; */
+        height: 50vh;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .proflie3 img {
+        transform: translateY(29%);
+        border: 1px solid #fff;
+        top: 0px;
+        /* width: 21rem; */
+        height: 50vh;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .wideprofile3 img {
+        transform: translateY(29%);
+        border: 1px solid #fff;
+        top: 0px;
+        /* width: 21rem; */
+        height: 50vh;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .proflie4 img {
+        transform: translateY(29%);
+        border: 1px solid #fff;
+        top: 0px;
+        /* width: 21rem; */
+        height: 50vh;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .wideprofile4 img {
+        transform: translateY(29%);
+        border: 1px solid #fff;
+        top: 0px;
+        /* width: 21rem; */
+        height: 50vh;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .box {
+        top: 82%;
+        transform: translateY(-50%);
+        left: 74px;
+        width: 100%;
+        position: absolute;
+    }
+}

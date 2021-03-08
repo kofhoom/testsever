@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>KIM JUN SU</title>
+
+    <link rel="shortcut icon" href="img/favicon_32x32.png" type="image/x-icon" />
+    <link rel="icon" href="img/favicon_32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/profile2.css">
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/jquery-3.4.1.min.js"></script>
+</head>
+
+<body style="position: fixed">
+
+    <div id="wrap">
+        <div class="werwer" style="position: absolute; top: 0; right:0; background-color:transparent;"><img src="img/200840-200.png" alt="img" style="width: 60px; padding: 10px;"></div>
+        <div class="degbox">
+            <div class="view" onclick="Show360View();">
+                <div class="show360view"><span style="display: block;">Show wide view</span></div>
+            </div>
+            <div class="view2" onclick="Close360View(); ">
+                <div class="close360view"><span style="display: block;">close wide view</span></div>
+            </div>
+        </div>
+        <div class="proflie"><a href="index.html"><img src="img/kimjunsu.jpg" alt="img"></a></div>
+        <div class="proflie2"><a href="http://kofhoom.dothome.co.kr/port1" target="_blank">
+                <img src="img/port1.png" alt="img">
+            </a>
+        </div>
+        <div class="proflie3"><a href="https://kofhoom.github.io/port2bong/STAGE1/STAGE1.html" target="_blank">
+                <img src="img/port2.png" alt="img">
+            </a></div>
+        <div class="proflie4"><a href="https://kofhoom.github.io/p3plant/plant.html" target="_blank">
+                <img src="img/port3.png" alt="img">
+            </a></div>
+        <canvas id="canvas" width="260" height="60"> </canvas>
+        <div class="box">
+            <div class="myself">
+                <span><strong>이름: </strong> 김준수(金俊洙)</span><br>
+
+                <span><strong>훈련과정 : </strong>Smart Web &amp; Content Development</span><br>
+
+                <span><strong>경력 : </strong>lyric Writing,Composing, President Of Cassette Tape Record Company (DOWNCATRECORDS)</span>
+                <a href="resume.zip"><span class="box3txt">이력서 다운로드</span></a>
+
+            </div>
+            <div class="box2">
+                <div class="myself2">
+                    <span><strong>프로젝트 명 : </strong>Downcat Reocrds Hompage (Cassette Tape Shopping Mall)</span><br>
+                    <span><strong>역할 : </strong>Planning And Development Design As a Whole (Single Project)</span><br>
+                    <span><strong>사용 기술 :</strong> Javascript, JQuery, Html5, Css3,Plug-in(jquery.touch.min.js),<br>반응형, 웹 접근성,Cross Browsing</span>
+                    <a href="http://kofhoom.dothome.co.kr/port1" target="_blank"><span class="box2txt">바로가기</span></a>
+                </div>
+            </div>
+            <div class="box3">
+                <div class="myself3">
+                    <span><strong>프로젝트 명 :</strong> 봉준호 감독 소개 Hompage(Group Project Bong Joon-ho website)</span><br>
+                    <span><strong>역할 : </strong>그룹 프로젝트 (game and UI/UX implementation [stage2: Okja], goods [sub page],<br> mobile screen, game sound & background music production)</span><br>
+                    <span><strong>사용 기술 : </strong>Javascript, JQuery, Html5, Css3, Plug-in(touch.swiper), 반응형, 웹 접근성,<br>Cross Browsing</span>
+                    <a href="https://kofhoom.github.io/port2bong/STAGE1/STAGE1.html" target="_blank"><span class="box3txt">바로가기</span></a>
+                </div>
+            </div>
+            <div class="box4">
+                <div class="myself4">
+                    <span><strong>프로젝트 명 :</strong> PLANT Hompage(Group Project website)</span><br>
+                    <span><strong>역할 : </strong>그룹 프로젝트 (MAIN UI/UX & SIDE MENU implementation, mobile screen</span><br>
+                    <span><strong>사용 기술 : </strong>Javascript, JQuery, Html5, Css3, Plug-in(swiper), 반응형, 웹 접근성,<br>Cross Browsing</span>
+                    <a href="https://kofhoom.github.io/port3plant/yuu/index.html" target="_blank"><span class="box3txt">바로가기</span></a>
+                </div>
+            </div>
+            <div class="textbox" onclick="start(); this.onclick=null;">
+                <p>Front-end web designer</p><br>
+                <p>Kim Jun Su </p><br>
+                <p class="start12">Click Strat</p>
+            </div>
+            <p class="maintext">모바일 환경에서 지원하지 않습니다. </p>
+        </div>
+        <span class="explor">Internet Explorer에서 지원하지 않습니다.</span>
+    </div>
+    <div class="leftright">
+        <img src="img/left.png" id="left" onclick="myFunction()" alt="left" />
+        <div class="center"></div>
+        <img src="img/right1.png" id="right" onclick="myFunction1()" alt="right" />
+    </div>
+
+
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="http://fenixrepo.fao.org/cdn/js/threejs/4.4/OrbitControls.js"></script>
+    <script>
+        //ex감지
+        if (navigator.appVersion.indexOf("MSIE") != -1 || navigator.appVersion.indexOf("Trident") != -1 || navigator.appVersion.indexOf("Edge") != -1) {
+            document.querySelector('.textbox').style.display = 'none';
+            document.querySelector('.maintext').style.display = 'none';
+            document.querySelector('.explor').style.display = 'block';
+        }
+
+
+
+        //right
+        function myFunction1() {
+            //close view
+            var pos = 0;
+            var box2 = document.querySelector(".box2");
+            var box3 = document.querySelector(".box3");
+            var box4 = document.querySelector(".box4");
+            var id = setInterval(frame, 25);
+            var center = document.querySelector(".center");
+            var poplieimg = document.querySelector(".proflie");
+            var myselfman = document.querySelector(".myself");
+            var poplieimg2 = document.querySelector(".proflie2");
+            var myselfman2 = document.querySelector(".myself2");
+            var poplieimg3 = document.querySelector(".proflie3");
+            var myselfman3 = document.querySelector(".myself3");
+            var poplieimg4 = document.querySelector(".proflie4");
+            var myselfman4 = document.querySelector(".myself4");
+            var message = mesh2.name;
+            var message2 = mesh3.name;
+            var message3 = mesh4.name;
+
+            var metrics = context1.measureText(message);
+            var width = metrics.width + 40;
+
+
+            function frame() {
+                if (pos == 15) {
+                    clearInterval(id);
+                } else {
+                    pos++
+                    mesh.position.x -= 1;
+                    mesh2.position.x -= 1;
+                    mesh3.position.x -= 1;
+                    mesh4.position.x -= 1;
+                } //1
+                if (mesh.position.x == 1) {
+                    context1.clearRect(0, 0, 800, 300);
+                    myselfman.style.zIndex = "1";
+                    box2.style.zIndex = "99";
+                    box3.style.zIndex = "1";
+                    box4.style.zIndex = "1";
+
+                    left.style.opacity = "1";
+                    left.style.visibility = "visible";
+
+                    poplieimg.style.visibility = "hidden"
+                    poplieimg.classList.add("rightmove");
+                    poplieimg.classList.remove("leftmove");
+
+                    myselfman.classList.add("rightmove");
+                    myselfman.classList.remove("leftmove");
+
+
+                    poplieimg2.classList.add("leftmove");
+                    poplieimg2.classList.remove("rightmove");
+                    poplieimg2.style.visibility = "visible";
+
+                    myselfman2.classList.add("leftmove");
+                    myselfman2.classList.remove("rightmove");
+                    myselfman2.style.visibility = "visible";
+
+
+                    context1.fillStyle = "rgba(0,0,0,0.95)";
+                    context1.fillStyle = "rgba(255,255,255,0.95)";
+                    context1.fillRect(2, 2, width, 150 + 4);
+                    context1.fillStyle = "rgba(0,0,0,1)";
+                    context1.fillText(message, 22, 43);
+
+                    texture1.needsUpdate = true;
+                    center.classList.add("infinity");
+                    center.classList.remove("infinity2");
+                } //2
+                if (mesh.position.x == -16) {
+                    myselfman.style.zIndex = "1";
+                    box2.style.zIndex = "1";
+                    box3.style.zIndex = "99";
+                    box4.style.zIndex = "1";
+                    context1.clearRect(0, 0, 800, 300);
+
+                    poplieimg2.classList.add("rightmove");
+                    poplieimg2.classList.remove("leftmove");
+                    poplieimg2.style.visibility = "hidden";
+
+                    myselfman2.classList.add("rightmove");
+                    myselfman2.classList.remove("leftmove");
+
+
+                    poplieimg3.classList.add("leftmove");
+                    poplieimg3.classList.remove("rightmove");
+                    poplieimg3.style.visibility = "visible";
+
+
+                    myselfman3.classList.add("leftmove");
+                    myselfman3.classList.remove("rightmove");
+                    myselfman3.style.visibility = "visible";
+
+                    context1.fillStyle = "rgba(0,0,0,0.95)";
+                    context1.fillStyle = "rgba(255,255,255,0.95)";
+                    context1.fillRect(2, 2, width, 150 + 4);
+                    context1.fillStyle = "rgba(0,0,0,1)";
+                    context1.fillText(message2, 22, 43);
+
+                    texture1.needsUpdate = true;
+                    center.classList.remove("infinity");
+                    center.classList.add("infinity2");
+                }
+                if (mesh.position.x == -31) {
+                    myselfman.style.zIndex = "1";
+                    box2.style.zIndex = "1";
+                    box3.style.zIndex = "1";
+                    box4.style.zIndex = "99";
+                    context1.fillStyle = "rgba(0,0,0,0.95)";
+                    context1.fillStyle = "rgba(255,255,255,0.95)";
+                    context1.fillRect(2, 2, width, 150 + 4);
+                    context1.fillStyle = "rgba(0,0,0,1)";
+                    context1.fillText(message3, 22, 43);
+
+                    texture1.needsUpdate = true;
+
+                    poplieimg3.style.visibility = "hidden";
+                    poplieimg3.classList.add("rightmove");
+                    poplieimg3.classList.remove("leftmove");
+
+                    myselfman3.classList.add("rightmove");
+                    myselfman3.classList.remove("leftmove");
+
+
+                    right.style.opacity = "0";
+                    right.style.visibility = "hidden";
+
+                    center.classList.remove("infinity2");
+                    center.classList.add("infinity");
+
+                    poplieimg4.classList.add("leftmove");
+                    poplieimg4.classList.remove("rightmove");
+                    poplieimg4.style.visibility = "visible";
+
+                    myselfman4.classList.add("leftmove");
+                    myselfman4.classList.remove("rightmove");
+                    myselfman4.style.visibility = "visible";
+
+                }
+            }
+        }
+        //left
+        function myFunction() {
+
+            var pos = 0;
+            var id = setInterval(frame, 25);
+            var box2 = document.querySelector(".box2");
+            var box3 = document.querySelector(".box3");
+            var box4 = document.querySelector(".box4");
+            var center = document.querySelector(".center");
+            var myselfman = document.querySelector(".myself");
+            var myselfman2 = document.querySelector(".myself2");
+            var poplieimg = document.querySelector(".proflie");
+            var poplieimg2 = document.querySelector(".proflie2");
+            var poplieimg3 = document.querySelector(".proflie3");
+            var myselfman3 = document.querySelector(".myself3");
+            var poplieimg4 = document.querySelector(".proflie4");
+            var myselfman4 = document.querySelector(".myself4");
+            var messagemian = mesh.name;
+            var message = mesh2.name;
+            var message2 = mesh3.name;
+            var metrics = context1.measureText(message);
+            var width = metrics.width + 40;
+
+
+            function frame() {
+                if (pos == 15) {
+                    clearInterval(id);
+                } else {
+                    ++pos
+                    mesh.position.x += 1;
+                    mesh2.position.x += 1;
+                    mesh3.position.x += 1;
+                    mesh4.position.x += 1;
+
+                }
+                if (mesh.position.x == -10) {
+                    myselfman.style.zIndex = "99";
+                    box2.style.zIndex = "1";
+                    box3.style.zIndex = "1";
+                    box4.style.zIndex = "1";
+                    context1.clearRect(0, 0, 800, 300);
+                    poplieimg.classList.add("leftmove");
+                    poplieimg.classList.remove("rightmove");
+                    poplieimg.style.visibility = "visible";
+
+                    myselfman.classList.add("leftmove");
+                    myselfman.classList.remove("rightmove");
+
+                    poplieimg2.classList.add("rightmove");
+                    poplieimg2.classList.remove("leftmove");
+                    poplieimg2.style.visibility = "hidden";
+                    myselfman2.classList.add("rightmove");
+                    myselfman2.classList.remove("leftmove");
+                    myselfman2.style.visibility = "visible";
+
+                    left.style.opacity = "0";
+                    left.style.visibility = "hidden";
+                    right.style.opacity = "1";
+                    right.style.visibility = "visible";
+                    context1.fillStyle = "rgba(0,0,0,0.95)";
+                    context1.fillStyle = "rgba(255,255,255,0.95)";
+                    context1.fillRect(2, 2, width - 68, 150 + 4);
+                    context1.fillStyle = "rgba(0,0,0,1)";
+                    context1.fillText(messagemian, 22, 43);
+                    center.classList.remove("infinity");
+                    center.classList.add("infinity2");
+                    texture1.needsUpdate = true;
+
+                }
+                if (mesh.position.x == -27) {
+                    myselfman.style.zIndex = "1";
+                    box2.style.zIndex = "99";
+                    box3.style.zIndex = "1";
+                    box4.style.zIndex = "1";
+
+                    context1.clearRect(0, 0, 800, 300);
+
+                    poplieimg2.classList.add("leftmove");
+                    poplieimg2.classList.remove("rightmove");
+                    poplieimg2.style.visibility = "visible";
+
+                    myselfman2.classList.add("leftmove");
+                    myselfman2.classList.remove("rightmove");
+
+                    poplieimg3.classList.add("rightmove");
+                    poplieimg3.classList.remove("leftmove");
+                    poplieimg3.style.visibility = "hidden";
+
+                    myselfman3.classList.add("rightmove");
+                    myselfman3.classList.remove("leftmove");
+
+                    context1.fillStyle = "rgba(0,0,0,0.95)";
+                    context1.fillStyle = "rgba(255,255,255,0.95)";
+                    context1.fillRect(2, 2, width, 150 + 4);
+                    context1.fillStyle = "rgba(0,0,0,1)";
+                    context1.fillText(message, 22, 43);
+
+                    texture1.needsUpdate = true;
+
+                    center.classList.remove("infinity2");
+                    center.classList.add("infinity");
+
+                }
+                if (mesh.position.x == -42) {
+                    myselfman.style.zIndex = "1";
+                    box2.style.zIndex = "1";
+                    box3.style.zIndex = "99";
+                    box4.style.zIndex = "1";
+
+                    context1.fillStyle = "rgba(0,0,0,0.95)";
+                    context1.fillStyle = "rgba(255,255,255,0.95)";
+                    context1.fillRect(2, 2, width, 150 + 4);
+                    context1.fillStyle = "rgba(0,0,0,1)";
+                    context1.fillText(message2, 22, 43);
+
+                    texture1.needsUpdate = true;
+                    poplieimg3.classList.add("leftmove");
+                    poplieimg3.classList.remove("rightmove");
+                    poplieimg3.style.visibility = "visible";
+                    myselfman3.classList.add("leftmove");
+                    myselfman3.classList.remove("rightmove");
+
+                    right.style.opacity = "1";
+                    right.style.visibility = "visible";
+
+                    center.classList.remove("infinity");
+                    center.classList.add("infinity2");
+
+                    poplieimg4.classList.remove("leftmove");
+                    poplieimg4.classList.add("rightmove");
+                    poplieimg4.style.visibility = "hidden";
+
+                    myselfman4.classList.add("rightmove");
+                    myselfman4.classList.remove("leftmove");
+                    myselfman4.style.visibility = "hidden";
+                }
+
+            }
+        }
+
+        function Show360View() {
+            var pos = 0;
+            var sos = 0;
+            var canvertext = document.getElementById("canvas");
+            var show360view = document.querySelector(".view");
+            var close360view = document.querySelector(".view2");
+            var id = setInterval(wide, 25);
+
+            //sect1
+            let myself = document.querySelector(".myself");
+            let poplie1 = document.querySelector(".proflie");
+            let box = document.querySelector(".box");
+
+            myself.classList.remove("myself");
+            myself.classList.add("widestylemyself");
+            box.classList.remove("box");
+            box.classList.add("widebox");
+            poplie1.classList.remove("proflie");
+            poplie1.classList.add("wideprofile");
+
+
+            //sec2
+            let myself2 = document.querySelector(".myself2");
+            let poplie2 = document.querySelector(".proflie2");
+            let box2 = document.querySelector(".box2");
+
+
+            myself2.classList.remove("myself2");
+            myself2.classList.add("widestylemyself2");
+            box2.classList.remove("box2");
+            box2.classList.add("widebox2");
+            poplie2.classList.remove("proflie2");
+            poplie2.classList.add("wideprofile2");
+
+
+
+            //sec3
+            let myself3 = document.querySelector(".myself3");
+            let poplie3 = document.querySelector(".proflie3");
+            let box3 = document.querySelector(".box3");
+
+
+            myself3.classList.remove("myself3");
+            myself3.classList.add("widestylemyself3");
+            box3.classList.remove("box3");
+            box3.classList.add("widebox3");
+            poplie3.classList.remove("proflie3");
+            poplie3.classList.add("wideprofile3");
+
+
+
+            //sec4
+            let myself4 = document.querySelector(".myself4");
+            let poplie4 = document.querySelector(".proflie4");
+            let box4 = document.querySelector(".box4");
+
+
+            myself4.classList.remove("myself4");
+            myself4.classList.add("widestylemyself4");
+            box4.classList.remove("box4");
+            box4.classList.add("widebox4");
+            poplie4.classList.remove("proflie4");
+            poplie4.classList.add("wideprofile4");
+
+
+            document.querySelector(".leftright").style.display = "none";
+
+
+
+
+
+            show360view.style.visibility = "hidden";
+            show360view.style.opacity = "0";
+            show360view.style.right = "-200px";
+
+            close360view.style.opacity = "1";
+            close360view.style.visibility = "visible";
+            close360view.style.right = "0px";
+
+            function wide() {
+                if (pos == 100 || sos == -105) {
+                    clearInterval(id);
+                } else {
+                    pos++
+                    --sos
+                    camera.position.set(sos, 0, pos);
+
+                }
+            };
+        }
+
+        function Close360View() {
+
+            var pos = 0;
+            var sos = 0;
+            var show360view = document.querySelector(".view");
+            var close360view = document.querySelector(".view2");
+
+
+            //sect1
+            let myself = document.querySelector(".widestylemyself");
+            let poplie1 = document.querySelector(".wideprofile");
+            let box = document.querySelector(".widebox");
+
+
+            myself.classList.remove("widestylemyself");
+            myself.classList.add("myself");
+            box.classList.remove("widebox");
+            box.classList.add("box");
+            poplie1.classList.remove("wideprofile");
+            poplie1.classList.add("proflie");
+
+
+            //sec2
+            let myself2 = document.querySelector(".widestylemyself2");
+            let poplie2 = document.querySelector(".wideprofile2");
+            let box2 = document.querySelector(".widebox2");
+
+
+            myself2.classList.remove("widestylemyself2");
+            myself2.classList.add("myself2");
+            box2.classList.remove("widebox2");
+            box2.classList.add("box2");
+            poplie2.classList.remove("wideprofile2");
+            poplie2.classList.add("proflie2");
+
+
+            //sec3
+            let myself3 = document.querySelector(".widestylemyself3");
+            let poplie3 = document.querySelector(".wideprofile3");
+            let box3 = document.querySelector(".widebox3");
+
+
+            myself3.classList.remove("widestylemyself3");
+            myself3.classList.add("myself3");
+            box3.classList.remove("widebox3");
+            box3.classList.add("box3");
+            poplie3.classList.remove("wideprofile3");
+            poplie3.classList.add("proflie3");
+
+
+
+            //sec4
+            let myself4 = document.querySelector(".widestylemyself4");
+            let poplie4 = document.querySelector(".wideprofile4");
+            let box4 = document.querySelector(".widebox4");
+
+
+            myself4.classList.remove("widestylemyself4");
+            myself4.classList.add("myself4");
+            box4.classList.remove("widebox4");
+            box4.classList.add("box4");
+            poplie4.classList.remove("wideprofile4");
+            poplie4.classList.add("proflie4");
+
+
+            document.querySelector(".leftright").style.display = "flex";
+
+
+            show360view.style.opacity = "1";
+            show360view.style.right = "0px";
+            show360view.style.visibility = "visible";
+            close360view.style.visibility = "hidden";
+            close360view.style.opacity = "0";
+            close360view.style.right = "-200px";
+            camera.position.set(0, 0, 20);
+        };
+
+        var sprite1;
+        var canvas1, context1, texture1;
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+        scene.add(camera);
+        camera.position.set(-35, 0, 0);
+        camera.lookAt(scene.position);
+
+        var renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            preserveDrawingBuffer: true
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.querySelector('#wrap').appendChild(renderer.domElement);
+
+        var light1 = new THREE.PointLight(0xffffff, 1.5, 100);
+        light1.position.set(-5, 5, 5);
+        scene.add(light1);
+
+
+        var light2 = new THREE.PointLight(0xffFFFF, 0.7, 100);
+        light2.position.set(0, -5, 6);
+        scene.add(light2);
+
+        function getRandom() {
+            var num = Math.floor(Math.random() * 40) + 1;
+            num *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
+            return num;
+        }
+
+
+
+        var starTexture = new THREE.TextureLoader().load("img/littledeep_star_style2.png");
+        var stars = [];
+
+        for (let i = 0; i < 1750; i++) {
+            let geometry = new THREE.CircleBufferGeometry(0.02, 32);
+            let material = new THREE.MeshBasicMaterial({
+                map: starTexture
+            });
+            let star = new THREE.Mesh(geometry, material);
+            star.position.set(getRandom(), getRandom(), getRandom());
+            star.material.side = THREE.DoubleSide;
+            stars.push(star);
+        }
+        for (let j = 0; j < stars.length; j++) {
+            scene.add(stars[j]);
+        }
+
+        var loader = new THREE.TextureLoader();
+
+
+        var mesh;
+
+        loader.load(
+            'img/earth.jpg',
+            function(texture) {
+                mesh = new THREE.Mesh(
+                    new THREE.IcosahedronGeometry(3, 5),
+                    new THREE.MeshStandardMaterial({
+                        map: texture
+                    })
+                );
+                mesh.position.x += 2;
+                mesh.name = 'My World';
+                scene.add(mesh);
+            }
+        );
+
+        var mesh2;
+        loader.load(
+            'img/moon.png',
+            function(texture) {
+                mesh2 = new THREE.Mesh(
+                    new THREE.IcosahedronGeometry(3, 5),
+                    new THREE.MeshStandardMaterial({
+                        map: texture
+                    })
+                );
+                mesh2.name = 'Portfolio No.1';
+                scene.add(mesh2);
+                mesh2.position.set(15, 0, 0);
+                mesh2.position.x += 2;
+
+            }
+        );
+
+        var mesh3;
+        loader.load(
+            'img/mock.jpg',
+            function(texture) {
+                mesh3 = new THREE.Mesh(
+                    new THREE.IcosahedronGeometry(3, 5),
+                    new THREE.MeshStandardMaterial({
+                        map: texture
+                    })
+                );
+                mesh3.name = 'Portfolio No.2';
+                scene.add(mesh3);
+                mesh3.position.set(30, 0, 0);
+
+                mesh3.position.x += 2;
+            }
+        );
+
+        var mesh4;
+        loader.load(
+            'img/evga.png',
+            function(texture) {
+                mesh4 = new THREE.Mesh(
+                    new THREE.IcosahedronGeometry(3, 5),
+                    new THREE.MeshStandardMaterial({
+                        map: texture
+                    })
+                );
+                mesh4.name = 'Portfolio No.3';
+                scene.add(mesh4);
+                mesh4.position.set(45, 0, 0);
+                mesh4.position.x += 2;
+            }
+        );
+
+        var canvas1;
+        var imgmain;
+        imgmain = document.getElementById('imgmain');
+        canvas1 = document.getElementById('canvas');
+
+        context1 = canvas1.getContext('2d');
+        context1.font = "italic bold 33px arial,serif";
+        context1.fillStyle = "rgba(0,11,0,0.95)";
+        context1.fillText('Hello, world!', 0, 0);
+
+        texture1 = new THREE.Texture(canvas1)
+        texture1.needsUpdate = true;
+
+        var controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.update();
+
+
+        function show() {
+
+            var right = document.querySelector("#right");
+            right.style.opacity = "1";
+
+        }
+
+
+        function start() {
+
+            var rotatesystem = document.querySelector(".view");
+            var vos = 0;
+            var id = setInterval(zoom, 25);
+            var header = document.querySelector(".textbox");
+            var canvertext = document.getElementById("canvas");
+            var poplieimg = document.querySelector(".proflie");
+            var myselfman = document.querySelector(".myself");
+            var center = document.querySelector(".center");
+            var img = document.querySelector(".werwer");
+            document.querySelector(".degbox").style.display = 'block';
+            myselfman.style.zIndex = "99";
+
+            function zoom() {
+
+                header.onclick = null;
+
+                if (vos == 28) {
+                    clearInterval(id);
+
+                } else {
+                    vos++
+                    show()
+                    camera.position.set(0, 0, vos);
+                    header.style.opacity = "0";
+                    canvertext.classList.add("leftmove");
+                    poplieimg.classList.add("leftmove");
+                    rotatesystem.style.opacity = "1";
+                    myselfman.classList.add("leftmove");
+                    myselfman.style.visibility = "visible";
+                    header.style.visibility = "hidden";
+                    poplieimg.style.visibility = "visible";
+                    img.style.visibility = "hidden";
+                    center.style.opacity = "1";
+
+                }
+
+            };
+        };
+        var left = document.querySelector("#left");
+
+        function checkClick(event) {
+            var clickX = event.clientX;
+            var clickY = event.clientY;
+
+        }
+
+        window.onclick = function(e) {
+            event = e;
+            var elementClickedId = checkClick(event);
+        }
+
+
+
+
+        function onMouseMove(event) {
+            var positionLeft = event.clientX;
+            var positionTop = event.clientY;
+
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        }
+
+
+
+
+        var projector, mouse = {
+                x: 0,
+                y: 0
+            },
+            INTERSECTED;
+
+
+        function update() {
+
+            var vector = new THREE.Vector3(mouse.x, mouse.y, 1);
+            vector.unproject(camera);
+            var ray = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
+
+            var intersects = ray.intersectObjects(scene.children);
+
+
+            if (intersects.length > 0) {
+
+                if (intersects[0].object != INTERSECTED) {
+
+                    if (INTERSECTED)
+                        INTERSECTED.material.color.setHex(INTERSECTED.currentHex);
+
+                    INTERSECTED = intersects[0].object;
+                    INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
+                    INTERSECTED.material.color.setHex(0xd3d3d3);
+
+                    if (intersects[0].object.name) {
+                        context1.clearRect(0, 0, 800, 300);
+                        var message = intersects[0].object.name;
+                        var metrics = context1.measureText(message);
+                        var width = metrics.width + 40;
+
+
+
+
+                        context1.fillStyle = "rgba(0,0,0,0.95)";
+                        context1.fillStyle = "rgba(255,255,255,0.95)";
+                        context1.fillRect(2, 2, width, 150 + 4);
+                        context1.fillStyle = "rgba(0,0,0,1)";
+                        context1.fillText(message, 22, 43);
+
+                        texture1.needsUpdate = true;
+                    } else {
+                        texture1.needsUpdate = true;
+                    }
+                }
+            } else {
+                if (INTERSECTED)
+                    INTERSECTED.material.color.setHex(INTERSECTED.currentHex);
+
+                INTERSECTED = null;
+                texture1.needsUpdate = true;
+            }
+            controls.update();
+
+        }
+
+        function render() {
+            this.mesh.rotation.y += 0.003;
+            this.mesh2.rotation.y += 0.003;
+            this.mesh3.rotation.y += 0.003;
+            this.mesh4.rotation.y += 0.003;
+
+            window.addEventListener('mousemove', onMouseMove, false);
+        }
+
+
+        //--반응형--//
+        var tanFOV = Math.tan(((Math.PI / 180) * camera.fov / 2));
+        var windowHeight = window.innerHeight;
+
+        window.addEventListener('resize', onWindowResize, false);
+
+        function onWindowResize(event) {
+
+            camera.aspect = window.innerWidth / window.innerHeight;
+
+            camera.fov = (360 / Math.PI) * Math.atan(tanFOV * (window.innerHeight / windowHeight));
+
+            camera.updateProjectionMatrix();
+            camera.lookAt(scene.position);
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.render(scene, camera);
+
+        }
+
+        var lightness = 1550;
+        var rotSpeed = 0.0004;
+
+        var animate = function() {
+            for (let k = 0; k < stars.length; k++) {
+                let star = stars[k];
+                star.rotation.x += 0.01;
+                star.rotation.y += 0.01;
+                lightness > 100 ? lightness = 0 : lightness++;
+                star.material.color = new THREE.Color("hsl(60, 100%, " + lightness + "%)");
+            }
+            requestAnimationFrame(animate);
+            update();
+
+            render();
+
+
+
+            renderer.render(scene, camera);
+
+            function higelevel() {
+                let x = camera.position.x;
+                let z = camera.position.z;
+                camera.position.x = x * Math.cos(rotSpeed) + z * Math.sin(rotSpeed);
+                camera.position.z = z * Math.cos(rotSpeed) - x * Math.sin(rotSpeed);
+            };
+            higelevel();
+        };
+        animate();
+
+    </script>
+</body>
+
+</html>
